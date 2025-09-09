@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Library System</title>
+</head>
+<body>
+    <header class="flex bg-blue-900 items-center justify-center p-8 flex-col">
+        <h2 class="capitalize text-center text-[24px] text-white ">📚 Library Management System (LMS)</h2>
+        <p class="text-gray-500 ">Success belongs to those that have the Will power to learn</p>
+    </header>
+
+    <main class="relative">
+        <section class="text-center p-5 items-center bg-blue-50 w-full p-[3%]">
+            <h2 class="text-[30px] font-bold ">Start Searching Books</h2>
+            <form id="searchBooks">
+             <input type="text" id="searchInput" placeholder="Search books accross the Library" class="rounded-md p-[12px] w-[40%] placeholder:text-center">
+             <button type="submit" id="submit" class="bg-blue-900 text-white p-[9px] rounded-md ml-2">🔎 Search</button>
+           </form>
+        </section>
+
+        <aside class="absolute top-64 m-4 p-2 w-64">
+            <h4 class="text-left font-bold text-[19px] my-2 text-blue-900">Navigations</h4>
+            <ul class="text-blue-500">
+                <li><a href="#">📇 Add New book</a></li>
+                <li><a href="#">➕ Update Reading Progress</a></li>
+                <li><a href="#">📦 Collection</a></li>
+            </ul>
+        </aside>
+
+        <section id="content-container" class=" text-center w-[70%] border-t-4 border-black m-auto bg-gray-100">
+             <div id="content-loader"></div>
+             <div id="content" class="m-8 flex flex-wrap flex-row gap-2 w-full m-auto items-center justify-center mt-4 bg-gray-100">
+                <!-- Data will be displayed in here -->
+             </div>
+        </section>
+    </main>
+
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="scripts/webhelpers.js"></script>
+</html>

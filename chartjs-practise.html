@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <title>ChartJS-Practise</title>
+</head>
+<body>
+  <header>
+    <div class="bg-green-600 text-white p-5 text-center capitalize">
+
+        <h2 class="text-[20px]"> 🌍 Data Analysis Board</h2>
+    </div>
+  </header>
+
+  <main>
+    <!-- Getting Content Data... -->
+     <section class="flexr flex-row m-auto w-180">
+        <canvas id="myChart"></canvas>
+     </section>
+  </main>
+  <script> 
+    const ctx = document.getElementById('myChart').getContext('2d');
+    
+    new Chart(ctx,{
+      type: 'bar',
+      data:{
+        labels: ['Chikwawa', 'Mangochi', 'Nsanje', 'Nkhotakota', 'Ntchinji'],
+        datasets:[{
+          label: 'Population By District',
+          data:['2000', '3000', '1020', '8000','1020'],
+          backgroundColor: [
+           'rgba(255, 99, 132, 0.5)',
+           'rgba(54, 162, 235, 0.5)',
+           'rgba(255, 206, 86, 0.5)',
+           'rgba(0, 255, 0, 0.6)'
+          ],
+          borderColor: [
+            'rgba(255, 99, 132, 0.5)',
+            'rgba(54, 162, 235, 0.5)',
+            'rgba(255, 206, 86, 0.5)',
+            'rgba(0, 255, 0, 0.6)'
+          ],
+          borderWidth: 2
+        },{
+          label: 'POP Music',
+          data:['2345', '40300', '13232', '832','2213'],
+          backgroundColor: [
+           'rgba(255, 99, 132, 0.5)',
+           'rgba(54, 162, 235, 0.5)',
+           'rgba(255, 206, 86, 0.5)',
+           'rgba(0, 255, 0, 0.6)'
+          ],
+          borderColor: [
+            'rgba(255, 99, 132, 0.5)',
+            'rgba(54, 162, 235, 0.5)',
+            'rgba(255, 206, 86, 0.5)',
+            'rgba(0, 255, 0, 0.6)'
+          ],
+          borderWidth: 2
+        }
+      ]
+      },
+      options:{
+        plugins:{
+          legend:{
+            display: true,
+            position: 'bottom'
+          },
+          tooltip:{
+            enabled:true,
+            backgroundColor: 'black'
+          },
+          title:{
+            display:true,
+            text: 'Random Statistics'
+          }
+        }
+      }
+      
+    })
+
+    async function fetchData() {  
+      const url = 'https://jsonplaceholder.typicode.com/posts';
+      try{
+      const response = await fetch(url, { method: 'GET'});
+
+      if(!response.ok){
+        throw new Error('An Error occurred during the' + response.status);
+      }
+
+      const _data = await response.json();
+      console.log("Response was received accurately");
+
+      return _data
+      }
+      catch(error){
+        console.log(`HTTP: ${error.message} sasa`);
+      return null;
+      }
+    }
+
+    fetchData().then((_data)=>{
+              if(_data){
+                 console.log(_data)
+              }}).catch((error)=>{
+                  console.error("Final error handler:", error.message)
+              })
+
+  </script>
+</body>
+</html>
+
